@@ -1,11 +1,12 @@
 var searchYouTube = (options, callback) => {
-  console.log(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${options.key}&max=${options.max}&query=${options.query}`);
+  console.log(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${options.key}&maxResults=${options.max}&q=${options.query}`);
   $.ajax({
-    url: `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${options.key}&max=${options.max}&query=${options.query}`,
+    url: `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${options.key}&maxResults=${options.max}&q=${options.query}`,
     request: 'GET',
     success: function(data) {
       console.log('yay! youtube data called successfully');
-      callback(data.items);
+      data = Array.isArray(data) ? data : data.items;
+      callback(data);
     },
     data: {status: {embeddable: true}}
   });
