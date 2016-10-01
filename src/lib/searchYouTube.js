@@ -5,7 +5,7 @@ var searchYouTube = (options, callback) => {
     request: 'GET',
     success: function(data) {
       console.log('yay! youtube data called successfully');
-      callback(data);
+      callback(data.items);
     },
     data: {status: {embeddable: true}}
   });

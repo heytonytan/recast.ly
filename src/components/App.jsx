@@ -5,14 +5,19 @@ class App extends React.Component {
       currentVideo: {},
       listOfVideos: []
     };
-    var data = props.searchYouTube({}, this.loadData.bind(this));
   }
   loadData(data) {
-    console.log(data); 
+    console.log('loading data yay!', data); 
     this.setState({ 
       currentVideo: data[0], 
       listOfVideos: data
     });
+    console.log(this.state);
+    this.render();
+  }
+  componentWillMount() {
+    console.log('componentWillMount!');
+    this.props.searchYouTube({}, this.loadData.bind(this));
   }
   updateVideo(video) {
     this.setState({
@@ -39,4 +44,4 @@ class App extends React.Component {
 // `var` declarations will only exist globally where explicitly defined
 window.App = App;
 
-ReactDOM.render(<App searchYouTube={searchYouTube}/>, document.getElementById('app'));
+ReactDOM.render(<App searchYouTube={searchYouTube} />, document.getElementById('app'));
