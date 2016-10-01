@@ -60,8 +60,8 @@ describe('searchYouTube', function() {
 
     var params = getURLSearchParams(requests[0].url);
     expect(params.key).to.equal('API_KEY');
-    expect(params.query).to.equal('cats');
-    expect(params.max).to.equal('10');
+    expect(params.q).to.equal('cats');
+    expect(params.maxResults).to.equal('10');
   });
 
   // Same shape means that the data should have the same keys, nested the same way as `exampleVideoData`,
@@ -69,8 +69,8 @@ describe('searchYouTube', function() {
   it('should GET videos with the same shape as `exampleVideoData`', function(done) {
     var options = {
       key: window.YOUTUBE_API_KEY,
-      query: 'react',
-      max: 5
+      q: 'react',
+      maxResults: 5
     };
 
     // We want this test to make a real AJAX request

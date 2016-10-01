@@ -6,8 +6,11 @@ class App extends React.Component {
       listOfVideos: exampleVideoData
     };
   }
+  componentWillMount() {
+    this.search('princeton v penn');
+  }
   loadData(data) {
-    console.log('successfully loaded data', data[0]);
+
     this.setState({ 
       currentVideo: data[0], 
       listOfVideos: data
@@ -17,12 +20,9 @@ class App extends React.Component {
   search(query) {
     this.props.searchYouTube({
       key: YOUTUBE_API_KEY,
-      max: 5,
-      query: query
+      maxResults: 5,
+      q: query
     }, this.loadData.bind(this));
-  }
-  componentWillMount() {
-    this.search('hack reactor');
   }
   updateVideo(video) {
     this.setState({
@@ -30,7 +30,7 @@ class App extends React.Component {
     });
   }
   handleInput(query) {
-    console.log('searching for', query);
+   
     this.search(query);
   }
   render() {

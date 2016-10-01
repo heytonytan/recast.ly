@@ -70,3 +70,15 @@ body {
   font-size: 12px;
   color: #999;
 }
+
+.video-details {
+  font-size: 10px;
+  color: #999;
+}
+
+.video-player .video-details {
+  font-size: 15px;
+  color: #999;
+}
+
+
